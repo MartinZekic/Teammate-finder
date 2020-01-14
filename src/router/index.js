@@ -25,6 +25,12 @@ const routes = [
     name: 'IzabirIgre',
     component: () => import(/* webpackChunkName: "IzabirIgre" */ '../views/IzabirIgre.vue')
   },
+  {
+    path: '/igraci',
+    name: 'Igraci',
+    component: () => import(/* webpackChunkName: "Igraci" */ '../views/Igraci.vue')
+  },
+  
 ]
 
 const router = new VueRouter({
