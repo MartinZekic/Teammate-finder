@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
               <a id="regs">Lozinka</a>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Unesite šifru">
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Unesite lozinku">
             </div>
             <button type="submit" class="btn btn-primary">Prijava</button>
           </form>
@@ -103,6 +103,7 @@ export default {
       password: '',
     }
   },
+  //NAPRAVITI RUTU ZA NASLOVNICU
   methods: {
     login () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch(function(error) {

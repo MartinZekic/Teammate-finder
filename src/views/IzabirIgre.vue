@@ -28,6 +28,16 @@
 </div>
 </template>
 
+ <script>
+export default {
+  methods : {
+    logout() {
+      firebase.auth().signOut()
+    }
+  }
+}
+</script>
+
 <style>
 * {
   box-sizing: border-box;

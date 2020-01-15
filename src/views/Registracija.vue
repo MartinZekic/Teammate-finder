@@ -21,12 +21,12 @@
               <input v-model="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Unesite e-mail adresu">
             </div>
             <div class="form-group">
-              <a id="reg1">Šifra</a>
-              <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Unesite šifru">
+              <a id="reg1">Lozinka</a>
+              <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Unesite lozinku">
             </div>
             <div class="form-group">
               <a id="reg1">Potvrda lozinke</a>
-               <input v-model="password2" type="password2" class="form-control" id="confirmPasswordField" placeholder="Potvrda šifre">
+               <input v-model="password2" type="password2" class="form-control" id="confirmPasswordField" placeholder="Potvrda lozinke">
             </div>
             <button type="submit" class="btn btn-primary">Registracija</button>
           </form>
@@ -47,9 +47,17 @@ export default {
   },
   methods: {
     signup () {
+      if (this.password === (this.password2)) {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(function(error) {
         console.log(error);
+        if (this.$route.name == 'registracija&apos;')
+          this.$router.push({name: 'IzabirIgre'}).catch(err => console.log(err))
       });
+    }
+      else{
+        console.log("passwords do not match&quot;");
+        return;
+      }
     }
   }
 }
