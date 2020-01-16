@@ -21,10 +21,36 @@ const routes = [
     component: () => import(/* webpackChunkName: "Registracija" */ '../views/Registracija.vue')
   },
   {
-    path: '/izabirigre',
-    name: 'IzabirIgre',
-    component: () => import(/* webpackChunkName: "IzabirIgre" */ '../views/IzabirIgre.vue')
+    path: '/profilig',
+    name: 'ProfilIg',
+    component: () => import(/* webpackChunkName: "IzabirIgre" */ '../views/ProfilIg.vue')
   },
+  {
+    path: '/igraci',
+    name: 'Igraci',
+    component: () => import(/* webpackChunkName: "Igraci" */ '../views/Igraci.vue')
+  },
+  {
+    path: '/pozivi',
+    name: 'Pozivi',
+    component: () => import(/* webpackChunkName: "Pozivi" */ '../views/Pozivi.vue')
+  },
+  {
+    path: '/timovi',
+    name: 'Timovi',
+    component: () => import(/* webpackChunkName: "Timovi" */ '../views/Timovi.vue')
+  },
+  {
+    path: '/inbox',
+    name: 'Inbox',
+    component: () => import(/* webpackChunkName: "Igraci" */ '../views/Inbox.vue')
+  },
+  {
+    path: '/profilp',
+    name: 'ProfilP',
+    component: () => import(/* webpackChunkName: "ProfilP" */ '../views/ProfilP.vue')
+  },
+  
 ]
 
 const router = new VueRouter({
