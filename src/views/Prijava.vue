@@ -12,14 +12,14 @@
         <div class="col-1">
         </div>
         <div class="col-5">
-          <form>
+          <form @submit.prevent="login">
             <div class="form-group">
               <a id="reg1">Email adresa</a>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Unesite e-mail adresu">
+              <input v-model="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Unesite e-mail adresu">
             </div>
             <div class="form-group">
               <a id="regs">Lozinka</a>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Unesite šifru">
+              <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Unesite lozinku">
             </div>
             <button type="submit" class="btn btn-primary">Prijava</button>
           </form>
@@ -40,8 +40,6 @@
   </div>
   </div>
 </template>
-
-  
 
 
 
@@ -103,6 +101,7 @@ export default {
       password: '',
     }
   },
+  //NAPRAVITI RUTU ZA NASLOVNICU
   methods: {
     login () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
