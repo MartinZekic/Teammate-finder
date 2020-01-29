@@ -7,9 +7,9 @@
 <div id=postforma>
 <form @submit.prevent="submitprofilig">
      <div class="form-group row">
-    <label for="GameId" class="naslpp">Id u igri:</label>
+    <label for="lolGameId" class="naslpp">Id u igri:</label>
     <div class="col-sm-10">
-      <input v-model="GameId" type="GameId" class="frm form-control" id="GameId" placeholder="Id">
+      <input v-model="lolGameId" type="lolGameId" class="frm form-control" id="lolGameId" placeholder="Id">
     </div>
   </div>
   <div class="form-group row">
@@ -21,7 +21,7 @@
     Rank
   </button> -->
   <div>
-    <select v-model="Rank">
+    <select v-model="lolRank">
   <option value="Iron">Iron</option>
   <option value="Bronze">Bronze</option>
   <option value="Silver">Silver</option>
@@ -45,7 +45,7 @@
     Pozicija
   </button> -->
   <div>
-    <select v-model="Pos">
+    <select v-model="lolPos">
   <option value selected="pos1">pos1</option>
   <option value="pos2">pos2</option>
   <option value="pos3">pos3</option>
@@ -65,7 +65,7 @@
     Regija
   </button> -->
   <div>
-    <select v-model="Regija">
+    <select v-model="lolRegija">
   <option value="centralnaHrvatska">Centralna Hrvatska</option>
   <option value="dalmacija">Dalmacija</option>
   <option value="Slavonija">Slavonija</option>
@@ -100,10 +100,10 @@ export default {
 
         db.collection("Korisnici").doc(this.userEmail).set
                       ({
-                      gameid:this.lolGameId,
-                      rank: this.lolRank,
-                      pos: this.lolPos,
-                      regija: this.lolRegija
+                      lolgameid:this.lolGameId,
+                      lolrank: this.lolRank,
+                      lolpos: this.lolPos,
+                      lolregija: this.lolRegija
                        }, 
                     { merge: true }).then(function() {
                       console.log("Document successfully written!");

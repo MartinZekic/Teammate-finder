@@ -14,12 +14,12 @@
 <div class="row">
   
   <div class="col">
-     <li id="podaciid">Rank: {{ Rank }} </li>
-     <li id="podaciid">Id u igri:{{ GameId}} </li>
+     <li id="podaciid">Rank: {{ dotaRank }} </li>
+     <li id="podaciid">Id u igri:{{ dotaGameId}} </li>
      
-     <li id="podaciid">Pozicija:{{ Pos }}</li>
+     <li id="podaciid">Pozicija:{{ dotaPos }}</li>
      
-     <li id="podaciid">Regija:{{Regija}}</li>
+     <li id="podaciid">Regija:{{dotaRegija}}</li>
      
      <li id="podaciid">Trenutni tim:</li>
      </div>
@@ -58,10 +58,10 @@ export default {
   mounted(){
     db.collection("Korisnici").doc(this.userEmail).get().then(doc =>{
         console.log("Document data:", doc.data());
-      this.GameId=doc.data().gameid;
-      this.Pos=doc.data().pos;
-      this.Regija=doc.data().regija;
-      this.Rank=doc.data().rank;
+      this.dotaGameId=doc.data().gameid;
+      this.dotaPos=doc.data().pos;
+      this.dotaRegija=doc.data().regija;
+      this.dotaRank=doc.data().rank;
       
         
 }).catch(function(error) {

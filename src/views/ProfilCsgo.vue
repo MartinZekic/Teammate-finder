@@ -7,9 +7,9 @@
 <div id=postforma>
 <form @submit.prevent="submitprofilig">
      <div class="form-group row">
-    <label for="GameId" class="naslpp">Id u igri:</label>
+    <label for="csgoGameId" class="naslpp">Id u igri:</label>
     <div class="col-sm-10">
-      <input v-model="GameId" type="GameId" class="frm form-control" id="GameId" placeholder="Id">
+      <input v-model="csgoGameId" type="csgoGameId" class="frm form-control" id="csgoGameId" placeholder="Id">
     </div>
   </div>
   <div class="form-group row">
@@ -21,7 +21,7 @@
     Rank
   </button> -->
   <div>
-    <select v-model="Rank">
+    <select v-model="csgoRank">
   <option value="Silver">Silver</option>
   <option value="Gold">Gold</option>
   <option value="Master Guardian">Master Guardian</option>
@@ -42,7 +42,7 @@
     Pozicija
   </button> -->
   <div>
-    <select v-model="Pos">
+    <select v-model="csgoPos">
   <option value selected="Entry-fragger">Entry-fragger</option>
   <option value="Rifler">Rifler</option>
   <option value="Sniper">Sniper</option>
@@ -62,7 +62,7 @@
     Regija
   </button> -->
   <div>
-    <select v-model="Regija">
+    <select v-model="csgoRegija">
   <option value="centralnaHrvatska">Centralna Hrvatska</option>
   <option value="dalmacija">Dalmacija</option>
   <option value="Slavonija">Slavonija</option>
@@ -98,10 +98,10 @@ export default {
 
         db.collection("Korisnici").doc(this.userEmail).set
                       ({
-                      gameid:this.csgoGameId,
-                      rank: this.csgoRank,
-                      pos: this.csgoPos,
-                      regija: this.csgoRegija
+                      csgogameid:this.csgoGameId,
+                      csgorank: this.csgoRank,
+                      csgopos: this.csgoPos,
+                      csgoregija: this.csgoRegija
                        }, 
                     { merge: true }).then(function() {
                       console.log("Document successfully written!");

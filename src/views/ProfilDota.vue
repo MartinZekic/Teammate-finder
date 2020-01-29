@@ -7,9 +7,9 @@
 <div id=postforma>
 <form @submit.prevent="submitprofilig">
      <div class="form-group row">
-    <label for="GameId" class="naslpp">Id u igri:</label>
+    <label for="dotaGameId" class="naslpp">Id u igri:</label>
     <div class="col-sm-10">
-      <input v-model="GameId" type="GameId" class="frm form-control" id="GameId" placeholder="Id">
+      <input v-model="dotaGameId" type="dotaGameId" class="frm form-control" id="dotaGameId" placeholder="Id">
     </div>
   </div>
   <div class="form-group row">
@@ -21,7 +21,7 @@
     Rank
   </button> -->
   <div>
-    <select v-model="Rank">
+    <select v-model="dotaRank">
   <option value="Herald">Herald</option>
   <option value="Guardian">Guardian</option>
   <option value="Crusader">Crusader</option>
@@ -44,7 +44,7 @@
     Pozicija
   </button> -->
   <div>
-    <select v-model="Pos">
+    <select v-model="dotaPos">
   <option value selected="Pos1">Pos1</option>
   <option value="Pos2">Pos2</option>
   <option value="Pos3">Pos3</option>
@@ -64,7 +64,7 @@
     Regija
   </button> -->
   <div>
-    <select v-model="Regija">
+    <select v-model="dotaRegija">
   <option value="Centralna Hrvatska">Centralna Hrvatska</option>
   <option value="Dalmacija">Dalmacija</option>
   <option value="Slavonija">Slavonija</option>
@@ -100,10 +100,10 @@ export default {
 
         db.collection("Korisnici").doc(this.userEmail).set
                       ({
-                      gameid:this.dotaGameId,
-                      rank: this.dotaRank,
-                      pos: this.dotaPos,
-                      regija: this.dotaRegija,
+                      dotagameid:this.dotaGameId,
+                      dotarank: this.dotaRank,
+                      dotapos: this.dotaPos,
+                      dotaregija: this.dotaRegija,
                        }, 
                     { merge: true }).then(function() {
                       console.log("Document successfully written!");
