@@ -1,5 +1,8 @@
 <template>
-    <div id=mm>
+<div>
+<navnside>
+</navnside>
+   <div id=mm>
     <img id="logo" src="../assets/logo.png">
     <div id=mbtn>
     <router-link :to="{name: 'Prijava'}">
@@ -7,21 +10,11 @@
     </router-link>
     </div>
     </div>
+</div>
 </template>
 
 
 
-
-<script>
-// @ is an alias to /src
-/*import HelloWorld from '@/components/HelloWorld.vue'
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}*/
-</script>
 
 <style>
 .btn{
@@ -31,7 +24,7 @@ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans
 font-size: 28px;
 }
 #logo {
- height: 145px;
+ height: 110px;
 }
 #mbtn{
 position:relative;
