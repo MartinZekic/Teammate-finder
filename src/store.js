@@ -1,15 +1,28 @@
+
 export default {
     authenticated: false,
     userEmail: 'fake@email.com',
-    cards: [ 
-        {
-          id: 1,
-          title: 'jedan', 
-          time: 'an hour ago', 
-          url: '/images/unsplash.jpg'
-        }, 
-        { id: 2, title: 'dva', time: 'two hours ago', url: '/images/logo.png' }, 
-        { id: 3, title: 'tri', time: 'a day ago', url: '/images/unsplash.jpg' }, 
-      ],
-    searchTerm: ''
+    korisnickoIme:'',
+    Dota: false,
+    Csgo: false,
+    Lol: false,
+    lolodabir: false,
+    dotaodabir: false,
+    csgoodabir: false,
+    dotaGameId:'',
+    dotaRank:'',
+    dotaPos:'',
+    dotaRegija:'',
+    csgoGameId:'',
+    csgoRank:'',
+    csgoPos:'',
+    csgoRegija:'',
+    lolGameId:'',
+    lolRank:'',
+    lolPos:'',
+    lolRegija:'',
+    Korisnici: [],
+    imageData: null,
+    prikazano: false,
+    brc:0,
 }
