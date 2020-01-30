@@ -6,6 +6,9 @@ export default {
     Dota: false,
     Csgo: false,
     Lol: false,
+    lolodabir: false,
+    dotaodabir: false,
+    csgoodabir: false,
     dotaGameId:'',
     dotaRank:'',
     dotaPos:'',
@@ -19,5 +22,6 @@ export default {
     lolPos:'',
     lolRegija:'',
     Korisnici: [],
-    imageData: null
+    imageData: null,
+    prikazano: false,
 }

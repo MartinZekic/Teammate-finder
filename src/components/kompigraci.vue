@@ -55,7 +55,7 @@ export default {
     return store
   },
 
-  mounted(){
+  created(){
     db.collection("Korisnici").where("dota","==",true).get().then((querySnapshot)=> {
     querySnapshot.forEach((doc)=> {
          let korisnik=doc.data()

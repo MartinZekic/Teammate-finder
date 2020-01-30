@@ -33,7 +33,7 @@
 <li id="dgmd"> <button type="button" class="btn btn-outline-primary" >Poruka</button></li>
 <li id="dgmd"> <button type="button" class="btn btn-outline-primary" >Pozovi u tim</button></li>
 </div>
-
+s
 </div>
 
 </div>

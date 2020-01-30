@@ -7,15 +7,13 @@
     <div class="btni">
  <span class="fltrs">
 <div class="btn-group">
-  <button type="button" class="btn mnb btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button type="button" @click="prikaz()" class="btn mnb btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Igra
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+    <a class="dropdown-item" @click="odaberidota()" href="#">Dota 2</a>
+    <a class="dropdown-item" @click="odabericsgo()" href="#">CS:GO</a>
+    <a class="dropdown-item" @click="odaberilol()" href="#">League of legends</a>
   </div>
 </div>
  <div class="btn-group">
@@ -59,9 +57,9 @@
 </div>
 
 
-<lolkompigraci></lolkompigraci>
-<csgokompigraci></csgokompigraci>
-<kompigraci></kompigraci>
+<lolkompigraci v-if="lolodabir"></lolkompigraci>
+<csgokompigraci v-if="csgoodabir"></csgokompigraci>
+<kompigraci v-if="dotaodabir"></kompigraci>
 
 
 
@@ -76,12 +74,48 @@ import csgokompigraci from '@/components/csgokompigraci.vue'
 import navnside from '@/components/navnside.vue'
 import store from '@/store.js'
 export default {
+
+  data (){
+        return store 
+  },
   components: {
     navnside,
     kompigraci,
     lolkompigraci,
     csgokompigraci
+  },
+  methods:{
+
+       prikaz(){
+      db.collection("Korisnici").doc().set
+                      ({
+                      doc.data().shown=this.prikazano
+                       },
+                      )},
+
+      odaberilol(){
+        this.lolodabir = true;
+          this.dotaodabir = false;
+          this.csgoodabir = false;
+      },
+      odabericsgo(){
+        this.lolodabir = false;
+          this.dotaodabir = false;
+          this.csgoodabir = true;
+      },
+      odaberidota(){
+        this.lolodabir = false;
+          this.dotaodabir = true;
+          this.csgoodabir = false;
+
+      }
+
+
+
+
   }
+
+
 }
 </script>
 
