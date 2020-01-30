@@ -12,14 +12,14 @@
         <div class="col-1">
         </div>
         <div class="col-5">
-          <form>
+          <form @submit.prevent="login">
             <div class="form-group">
               <a id="reg1">Email adresa</a>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Unesite e-mail adresu">
+              <input v-model="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Unesite e-mail adresu">
             </div>
             <div class="form-group">
               <a id="regs">Lozinka</a>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Unesite šifru">
+              <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Unesite lozinku">
             </div>
             <button type="submit" class="btn btn-primary">Prijava</button>
           </form>
@@ -41,8 +41,6 @@
   </div>
 </template>
 
-  
-
 
 
 
@@ -50,11 +48,11 @@
 #naslov{
   color: white;
   margin-right: 74%;
-  font-size: 50px;
+  font-size: 40px;
 }
 #reg1{
   color: white;
-  margin-right: 87%;
+  margin-right: 79%;
   font-size: 20px;
 }
 
@@ -70,14 +68,14 @@
 
 #reg2{
   color: white;
-  margin-right:30px;
-  font-size: 30px;
+  margin-right:250px;
+  font-size: 20px;
 }
 
 #regbtn{
    color: #007BFF;
-  margin-right: 250px;
-  font-size: 30px;
+  margin-right: 362px;
+  font-size: 20px;
   font-weight: bold;
 
 }
@@ -86,7 +84,7 @@
 margin-top: -95px;
 margin-left:5%;
  width:8px;
- border-top:700px solid rgb(255, 255, 255);
+ border-top:450px solid rgb(255, 255, 255);
 }
  #lpos{
   margin: auto;
@@ -103,6 +101,7 @@ export default {
       password: '',
     }
   },
+  //NAPRAVITI RUTU ZA NASLOVNICU
   methods: {
     login () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
