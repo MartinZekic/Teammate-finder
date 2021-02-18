@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="postav">
-    <form @submit.prevent="postImage">
+    <form @submit.prevent="submitkorisnickoime">
 <div class=wndw>
 <div class=sadr>
 <a id="naslov"> Postavljanje profila</a>
@@ -68,7 +68,7 @@ export default {
   },
   methods:{
     submitkorisnickoime(){
-        return 
+        
       
         db.collection("Korisnici").doc(this.userEmail).set({
                       korisnickoime: this.korisnickoIme,
@@ -94,7 +94,7 @@ export default {
 
     },
     postImage(){
-      
+      return
       this.imageData.generateBlob((blobData)=> {
         if(blobData != null){
         let imageName = this.userEmail + '/' + Date.now() + ".png";
