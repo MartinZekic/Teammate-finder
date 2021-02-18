@@ -1,20 +1,19 @@
 <template>
 <div>
-<div class="kartice" v-for="korisnik in odabir" :key="korisnik.id">
 <div class="igraci">
 <div class="row">
 <div id=userinfo>
 <ul id=red>
-<router-link :to="{name: 'Profil', params: {imekorisnika: korisnik.id}}"><li><img id="avatar" src="../assets/pplaceholder.jpg"/></li>
-<li id="imekor">{{ korisnik.korisnickoime }}</li></router-link>
+<router-link :to="{name: 'Profil', params: {imekorisnika: igrac.id}}"><li><img id="avatar" src="../assets/pplaceholder.jpg"/></li>
+<li id="imekor">{{ igrac.korisnickoime }}</li></router-link>
 </ul>
 </div>
 <div class="column">
 <div id=userpodaci>
-<li id="pods">Id u igri:{{korisnik.dotagameid}}</li>
-<li id="pods">Rank:{{korisnik.dotarank}}</li>
-<li id="pods">Pozicija:{{korisnik.dotapos}}</li>
-<li id="pods">Regija:{{korisnik.dotaregija}}</li>
+<li id="pods">Id u igri:{{igrac.dotagameid}}</li>
+<li id="pods">Rank:{{igrac.dotarank}}</li>
+<li id="pods">Pozicija:{{igrac.dotapos}}</li>
+<li id="pods">Regija:{{igrac.dotaregija}}</li>
 </div>
 </div>
 <div class="column2">
@@ -30,14 +29,13 @@
 
 <div class="column3">
 <div id=user>
-<li id="dgmd"> <button @click="dotainv(korisnik.id)" type="button" class="btn btn-outline-primary" >Pozovi u tim</button></li>
+<li id="dgmd"> <button @click="dotainv(igrac.id)" type="button" class="btn btn-outline-primary" >Pozovi u tim</button></li>
 </div>
 
 </div>
 
 </div>
 
-</div>
 </div>
 </div>
 </template>
@@ -48,26 +46,12 @@
 import store from '@/store.js'
 
 export default {
-
+  props: ['igrac'],
   data(){
     return store
   },
 
-  created(){
-    db.collection("Korisnici").where("dota","==",true).get().then((querySnapshot)=> {
-    querySnapshot.forEach((doc)=> {        
-        this.brc+=1
-         let korisnik=doc.data()
-         korisnik.id=doc.id;
-        this.Korisnici.push(korisnik);
-    });
-});
-  },
-  computed:{
-      odabir() {
-      return this.Korisnici.filter(korisnik => korisnik.dota);
-    }
-    },
+
     methods: {
       dotainv(k){
         db.collection('Korisnici').doc(k).collection("pozivi").doc(this.userEmail).set({

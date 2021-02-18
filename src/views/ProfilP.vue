@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="postav">
-    <form @submit.prevent="submitkorisnickoime">
+    <form @submit.prevent="postImage">
 <div class=wndw>
 <div class=sadr>
 <a id="naslov"> Postavljanje profila</a>
@@ -13,11 +13,16 @@
     </div>
      </div>
      <div class=row>
+       
     <div class="izavatar">
+      
       <label for="izabiravatara" class="izabiravatara">Odabir avatara:</label>
       <div id="kropa">
        <croppa :width="150" :height="150" v-model="imageData"></croppa>
       </div>
+      <div id="spremanje">
+        <button v-on:click="postImage">Spremi sliku</button>
+        </div>
     </div>
   </div>
 
@@ -55,7 +60,7 @@
 
 <script>
 import Croppa from 'vue-croppa';
-import store from '@/store.js'
+import store from '@/store.js';
 export default {
   data () {
     return store
@@ -63,12 +68,16 @@ export default {
   },
   methods:{
     submitkorisnickoime(){
+        return 
+      
         db.collection("Korisnici").doc(this.userEmail).set({
                       korisnickoime: this.korisnickoIme,
                       dota: this.Dota,
                       csgo: this.Csgo,
                       lol: this.Lol,
-                      id: this.userEmail
+                      id: this.userEmail,
+                      
+                      
                     }).then(function() {
                     console.log("Document successfully written!");
                     })
@@ -83,6 +92,54 @@ export default {
                     this.$router.push({name: 'ProfilLol'}).catch(err => console.log(err))
                   
 
+    },
+    postImage(){
+      
+      this.imageData.generateBlob((blobData)=> {
+        if(blobData != null){
+        let imageName = this.userEmail + '/' + Date.now() + ".png";
+        console.log(imageName);
+        storage.ref(imageName).put(blobData).then(result =>{
+          result.ref.getDownloadURL().then(url=>{
+            db.collection("Korisnici").doc(this.userEmail).add({
+              dota: this.Dota,
+              csgo: this.Csgo,
+              lol: this.Lol,
+              id: this.userEmail,
+              korisnickoime: this.korisnickoIme,
+              posted_at: Date.now(),
+              url: url
+            })
+            .then(docRef =>{
+              console.log("Document written with ID: ", docRef.id);
+              this.imageData = nill;
+            })
+            .catch(e=>{
+              console.error("Error adding document: ",error);
+            });
+          })
+          .catch(e=>{
+            console.error("Error adding document ", error);
+          });
+        })
+        .catch(e=>{
+          console.error(e)
+        });
+        if (this.$route.name == 'ProfilP' && this.Dota==true)
+                    this.$router.push({name: 'ProfilDota'}).catch(err => console.log(err))
+                    else if (this.Csgo==true) 
+                    this.$router.push({name: 'ProfilCsgo'}).catch(err => console.log(err))
+                    else if (this.Lol==true)
+                    this.$router.push({name: 'ProfilLol'}).catch(err => console.log(err))
+
+        }
+        })
+    
+    },
+    combo(){
+      this.postImage();
+      this.submitkorisnickoime();
+      
     }
   }
 }

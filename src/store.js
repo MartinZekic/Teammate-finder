@@ -1,7 +1,7 @@
 
 export default {
     authenticated: false,
-    userEmail: 'fake@email.com',
+    userEmail: '',
     korisnickoIme:'',
     Dota: false,
     Csgo: false,
@@ -24,7 +24,6 @@ export default {
     Korisnici: [],
     imageData: null,
     prikazano: false,
-    korisnik: {},
     authUser: {},
     dotaChat:true,
     csgoChat:false,
@@ -40,6 +39,9 @@ export default {
     loltim: false,
     dotatim: false,
     csgotim: false,
-    
+    dotaigraci: [],
+    csgoigraci: [],
+    loligraci: [],
+    searchText: '',
     brc:0,
 }

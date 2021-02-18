@@ -11,132 +11,44 @@
     Igra
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#" @click="odaberidota" >Dota 2</a>
-    <a class="dropdown-item" @click="odabericsgo" href="#">CS:GO</a>
-    <a class="dropdown-item" @click="odaberilol" href="#">League of legends</a>
+    <a class="dropdown-item" @click="odaberidota" >Dota 2</a>
+    <a class="dropdown-item" @click="odabericsgo" >CS:GO</a>
+    <a class="dropdown-item" @click="odaberilol" >League of legends</a>
   </div>
 </div>
  <div v-if="dotaodabir" class="btn-group">
-  <button type="button" class="btn mnb btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Rank
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Herald</a>
-    <a class="dropdown-item" href="#">Guardian</a>
-    <a class="dropdown-item" href="#">Crusader</a>
-    <a class="dropdown-item" href="#">Archon</a>
-    <a class="dropdown-item" href="#">Legend</a>
-    <a class="dropdown-item" href="#">Ancient</a>
-    <a class="dropdown-item" href="#">Divine</a>
-    <a class="dropdown-item" href="#">Immortal</a>
-  </div>
+  <input v-model="searchText" class="form-control mr-sm-2" type="search"
+placeholder="Search" aria-label="Search">
 </div>
- <div v-if="dotaodabir" class="btn-group">
-  <button type="button" class="btn mnb btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Regija
-  </button>
-  <div class="dropdown-menu">
- <a class="dropdown-item" href="#">Centralna Hrvatska</a>
-    <a class="dropdown-item" href="#">Dalmacija</a>
-    <a class="dropdown-item" href="#">Slavonija</a>
-    <a class="dropdown-item" href="#">Istra</a>
-  </div>
-</div>
-<div v-if="dotaodabir" class="btn-group">
-  <button type="button" class="btn mnb btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Pozicija
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Pos1</a>
-    <a class="dropdown-item" href="#">Pos2</a>
-    <a class="dropdown-item" href="#">Pos3</a>
-    <a class="dropdown-item" href="#">Pos4</a>
-        <a class="dropdown-item" href="#">Pos5</a>
-  </div>
-</div>
+ 
+ 
  <div v-if="csgoodabir" class="btn-group">
-  <button type="button" class="btn mnb btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Rank
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Silver</a>
-    <a class="dropdown-item" href="#">Gold</a>
-    <a class="dropdown-item" href="#">Master Guardian</a>
-    <a class="dropdown-item" href="#">Legendary Eagle</a>
-     <a class="dropdown-item" href="#">Supreme</a>
-    <a class="dropdown-item" href="#">Global Elite</a>
-  </div>
+  <input v-model="searchText" class="form-control mr-sm-2" type="search"
+placeholder="Search" aria-label="Search">
+  
 </div>
- <div v-if="csgoodabir" class="btn-group">
-  <button type="button" class="btn mnb btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Regija
-  </button>
-  <div class="dropdown-menu">
- <a class="dropdown-item" href="#">Centralna Hrvatska</a>
-    <a class="dropdown-item" href="#">Dalmacija</a>
-    <a class="dropdown-item" href="#">Slavonija</a>
-    <a class="dropdown-item" href="#">Istra</a>
-  </div>
-</div>
-<div v-if="csgoodabir" class="btn-group">
-  <button type="button" class="btn mnb btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Pozicija
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Entry-fragger</a>
-    <a class="dropdown-item" href="#">Rifler</a>
-    <a class="dropdown-item" href="#">Sniper</a>
-    <a class="dropdown-item" href="#">Support</a>
-    <a class="dropdown-item" href="#">Lurker</a>
-  </div>
-</div>
+
  <div v-if="lolodabir" class="btn-group">
-  <button type="button" class="btn mnb btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Rank
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Iron</a>
-    <a class="dropdown-item" href="#">Bronze</a>
-    <a class="dropdown-item" href="#">Silver</a>
-    <a class="dropdown-item" href="#">Gold</a>
-    <a class="dropdown-item" href="#">Platinum</a>
-    <a class="dropdown-item" href="#">Diamond</a>
-    <a class="dropdown-item" href="#">Master</a>
-    <a class="dropdown-item" href="#">GrandMaster</a>
-    <a class="dropdown-item" href="#">Challenger</a>
-  </div>
+
+  <input v-model="searchText" class="form-control mr-sm-2" type="search"
+placeholder="Search" aria-label="Search">
+
 </div>
- <div v-if="lolodabir" class="btn-group">
-  <button type="button" class="btn mnb btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Regija
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Centralna Hrvatska</a>
-    <a class="dropdown-item" href="#">Dalmacija</a>
-    <a class="dropdown-item" href="#">Slavonija</a>
-    <a class="dropdown-item" href="#">Istra</a>
-  </div>
-</div>
-<div v-if="lolodabir" class="btn-group">
-  <button type="button" class="btn mnb btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Pozicija
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Pos1</a>
-    <a class="dropdown-item" href="#">Pos2</a>
-    <a class="dropdown-item" href="#">Pos3</a>
-    <a class="dropdown-item" href="#">Pos4</a>
-    <a class="dropdown-item" href="#">Pos5</a>
-  </div>
-</div>
+ 
+
  </span>
     </div>
 </div>
 
-
-<lolkompigraci v-if="lolodabir"></lolkompigraci>
-<csgokompigraci v-if="csgoodabir"></csgokompigraci>
-<kompigraci v-if="dotaodabir"></kompigraci>
+<div v-for="igrac in dotaigraci" :key="igrac.id">
+            <kompigraci :igrac="igrac" v-if="dotaodabir" />
+        </div>
+        <div v-for="igrac in loligraci" :key="igrac.id">
+            <lolkompigraci :igrac="igrac" v-if="lolodabir" />
+        </div>
+        <div v-for="igrac in csgoigraci" :key="igrac.id">
+            <csgokompigraci :igrac="igrac" v-if="csgoodabir" />
+        </div>
 
 
 
@@ -153,7 +65,7 @@ import store from '@/store.js'
 export default {
 
   data (){
-        return store 
+        return store
   },
   components: {
     navnside,
@@ -161,6 +73,63 @@ export default {
     lolkompigraci,
     csgokompigraci
   },
+
+  mounted(){
+   if(this.csgoigraci.some(igrac => igrac.id === doc.data().id)==false){
+    firebase.firestore().collection("Korisnici").where("csgo","==",true).onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => {
+      
+         if(change.type === 'added'){
+           let doc = change.doc
+           console.log(doc.data())
+        let igrac=doc.data()
+         igrac.id=doc.id;
+        this.csgoigraci.push(igrac);
+}
+ else if( change.type === 'removed'){
+                           this.csgoigraci = this.csgoigraci.filter(csgoigraci =>{
+                            return csgoigraci.id != change.doc.id
+                          })
+                        }
+    });
+});
+}
+  if(this.dotaigraci.some(korisnik => korisnik.id === doc.data().id)==false){
+    firebase.firestore().collection("Korisnici").where("dota","==",true).onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => {
+         if(change.type === 'added'){
+           let doc = change.doc
+        let korisnik=doc.data()
+         korisnik.id=doc.id;
+        this.dotaigraci.push(korisnik);
+}
+ else if( change.type === 'removed'){
+                           this.dotaigraci = this.dotaigraci.filter(dotaigraci =>{
+                            return dotaigraci.id != change.doc.id
+                          })
+                        }
+    });
+});
+}
+  if(this.loligraci.some(korisnik => korisnik.id === doc.data().id)==false){
+    firebase.firestore().collection("Korisnici").where("lol","==",true).onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => {
+         if(change.type === 'added'){
+          let doc = change.doc
+        let korisnik=doc.data()
+         korisnik.id=doc.id;
+        this.loligraci.push(korisnik);
+}
+ else if( change.type === 'removed'){
+                           this.loligraci = this.loligraci.filter(loligraci =>{
+                            return loligraci.id != change.doc.id
+                          })
+                        }
+    });
+});
+}
+  },
+
   methods:{
 
 
@@ -179,12 +148,12 @@ export default {
           this.dotaodabir = true;
           this.csgoodabir = false;
 
-      }
+      },
 
 
 
+  },
 
-  }
 
 
 }

@@ -7,14 +7,6 @@
     <div class="btni">
  <span class="fltrs">
 <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Igra
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">DOTA 2</a>
-    <a class="dropdown-item" href="#">CS:GO</a>
-    <a class="dropdown-item" href="#">League of legends</a>
-  </div>
 </div>
  </span>
     </div>
@@ -35,30 +27,7 @@ export default {
     komptimdota
     
   },
-  methods:{
 
-
-      odaberilol(){
-        this.lolodabir = true;
-          this.dotaodabir = false;
-          this.csgoodabir = false;
-      },
-      odabericsgo(){
-        this.lolodabir = false;
-          this.dotaodabir = false;
-          this.csgoodabir = true;
-      },
-      odaberidota(){
-        this.lolodabir = false;
-          this.dotaodabir = true;
-          this.csgoodabir = false;
-
-      }
-
-
-
-
-  }
 }
 </script>
 

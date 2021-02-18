@@ -24,13 +24,13 @@
           <a href="/igraci"><span class="fa-stack fa-lg pull-left"></span> Igrači</a>
         </li>
         <li>
-          <a href="/timovi"><span class="fa-stack fa-lg pull-left"></span> Timovi</a>
+          <a href="/timovi"><span class="fa-stack fa-lg pull-left"></span> Prijatelji</a>
         </li>
         <li>
          <router-link to="/pozivi"> <a><span class="fa-stack fa-lg pull-left"></span>Pozivi</a></router-link>
         </li>
         <li>
-          <a href="/inbox"> <span class="fa-stack fa-lg pull-left"></span>Inbox</a>
+          <a href="/inbox"> <span class="fa-stack fa-lg pull-left"></span>Chat</a>
         </li>
       </ul>
     </div>

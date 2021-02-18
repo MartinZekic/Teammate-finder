@@ -1,20 +1,19 @@
 <template>
 <div>
-<div class="kartice" v-for="korisnik in odabir" :key="korisnik.id">
 <div class="igraci">
 <div class="row">
 <div id=userinfo>
 <ul id=red>
-<router-link :to="{name: 'Profil', params: {imekorisnika: korisnik.id}}"><li><img id="avatar" src="../assets/pplaceholder.jpg"/></li>
-<li id="imekor">{{ korisnik.korisnickoime }}</li></router-link>
+<router-link :to="{name: 'Profil', params: {imekorisnika: igrac.id}}"><li><img id="avatar" src="../assets/pplaceholder.jpg"/></li>
+<li id="imekor">{{ igrac.korisnickoime }}</li></router-link>
 </ul>
 </div>
 <div class="column">
 <div id=userpodaci>
-<li id="pods">Id u igri:{{korisnik.lolgameid}}</li>
-<li id="pods">Rank:{{korisnik.lolrank}}</li>
-<li id="pods">Pozicija:{{korisnik.lolpos}}</li>
-<li id="pods">Regija:{{korisnik.lolregija}}</li>
+<li id="pods">Id u igri:{{igrac.lolgameid}}</li>
+<li id="pods">Rank:{{igrac.lolrank}}</li>
+<li id="pods">Pozicija:{{igrac.lolpos}}</li>
+<li id="pods">Regija:{{igrac.lolregija}}</li>
 </div>
 </div>
 <div class="column2">
@@ -30,14 +29,13 @@
 
 <div class="column3">
 <div id=user>
-<li id="dgmd"> <button @click="lolinv(korisnik.id)" type="button" class="btn btn-outline-primary" >Pozovi u tim</button></li>
+<li id="dgmd"> <button @click="lolinv(igrac.id)" type="button" class="btn btn-outline-primary" >Pozovi u tim</button></li>
 </div>
 
 </div>
 
 </div>
 
-</div>
 </div>
 </div>
 </template>
@@ -48,27 +46,12 @@
 import store from '@/store.js'
 
 export default {
-
+props:['igrac'],
   data(){
     return store
   },
 
-  created(){
-    db.collection("Korisnici").where("lol","==",true).get().then((querySnapshot)=> {
-    querySnapshot.forEach((doc)=> {
-         this.brc+=1
-         let korisnik=doc.data()
-         korisnik.id=doc.id
-        this.Korisnici.push(korisnik);
-    });
-});
-  },
-  computed:{
-      odabir() {
-      return this.Korisnici.filter(korisnik => korisnik.lol);
 
-    }
-    },
      methods: {
       lolinv(k){
         db.collection('Korisnici').doc(k).collection("pozivi").doc(this.userEmail).set({
