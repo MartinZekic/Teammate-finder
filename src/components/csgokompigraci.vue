@@ -5,7 +5,7 @@
 <div class="row">
 <div id=userinfo>
 <ul id=red>
-<router-link :to="{name: 'Profil', params: {imekorisnika: igrac.id}}"><li><img id="avatar" src="../assets/pplaceholder.jpg"/></li>
+<router-link :to="{name: 'Profil', params: {imekorisnika: igrac.id}}"><li><img id="avatar" :src="igrac.url"/></li>
 <li id="imekor">{{ igrac.korisnickoime }}</li></router-link>
 </ul>
 </div>
@@ -30,7 +30,7 @@
 
 <div class="column3">
 <div id=user>
-<li id="dgmd"> <button @click="csgoinv(igrac.id)" type="button" class="btn btn-outline-primary" >Pozovi u tim</button></li>
+<li id="dgmd"> <button @click="csgoinv(igrac.id)" type="button" class="btn btn-outline-primary" >Dodaj</button></li>
 </div>
 </div>
 
@@ -58,8 +58,10 @@ export default {
       csgoinv(k){
         db.collection('Korisnici').doc(k).collection("pozivi").doc(this.userEmail).set({
                     od: this.userEmail,
-                    igra: "CS:GO"
-                })
+                    za: k,
+                    url: this.URL,
+                    korisnickoime: this.korisnickoIme,
+                }).then(alert("Zahtjev poslan"))
       }
     }
 

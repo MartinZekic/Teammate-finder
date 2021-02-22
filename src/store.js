@@ -42,6 +42,9 @@ export default {
     dotaigraci: [],
     csgoigraci: [],
     loligraci: [],
-    searchText: '',
+    searchTerm: '',
     brc:0,
+    URL:'',
+    korisnik:[],
+    Prijatelji: [],
 }

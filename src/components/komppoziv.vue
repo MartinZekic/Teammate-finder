@@ -1,26 +1,23 @@
 <template>
 <div>
-<div class="kartice" v-for="poziv in odabir" :key="poziv.id">
 <div class="pozivi">
     <div class="container">
    <div class="row" >
        <div class="col-lg-8">
   <div class="pozivuser"> 
-          <img id="pozavatar" src="../assets/pplaceholder.jpg"/>
+          <img id="pozavatar" :src="poziv.url"/>
           <a id="timkorime">{{poziv.od}}</a>
-          <span id="timkorime">vas poziva u</span>
-           <span id="timkorime">{{poziv.igra}}</span>
-           <span id="timkorime">tim</span>
+          <span id="timkorime">vam šalje zahtjev za prijateljstvo</span>
+
   </div>
       </div>
 <div class="col-md">
-    <button @click="prihvati(poziv.od)" type="button" class="btn btn-success">Prihvati</button>
-    <button @click="odbij(poziv.od)" type="button" class="btn btn-danger">Odbij</button>
+    <button @click="prihvati(poziv.od, poziv.za, poziv.url, poziv.korisnickoime)" type="button" class="btn btn-success">Prihvati</button>
+    <button @click="odbij(poziv.od, poziv.za)" type="button" class="btn btn-danger">Odbij</button>
 
 </div>
 </div>
 
-</div>
 </div>
 </div>
 </div>
@@ -32,40 +29,38 @@
 import store from '@/store.js'
 
 export default {
-
+props: ['poziv'],
   data(){
     return store
   },
 
-  created(){
-    db.collection("Korisnici").doc(this.userEmail).collection("pozivi").get().then((querySnapshot)=> {
-    querySnapshot.forEach((doc)=> {        
-         let poziv=doc.data()
-         poziv.id=doc.id;
-        this.Pozivi.push(poziv);
-    });
-});
+   methods: {
+prihvati(p,z,u,k){
+var brisanje_upit = firebase.firestore().collection("Korisnici").doc(z).collection("pozivi").where("od","==",p);
+brisanje_upit.get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(doc) {
+    doc.ref.delete()
+  });
+}).then(db.collection("Korisnici").doc(z).collection("prijatelji").doc(p).set({
+                      id: p,
+                      url: u,
+                      korisnickoime: k,
+                    })).then(db.collection("Korisnici").doc(p).collection("prijatelji").doc(z).set({
+                      id: z,
+                      url: this.URL,
+                      korisnickoime: this.korisnickoIme,
+                    })).then(alert("Zahtjev prihvaćen"));
   },
-  computed:{
-      odabir() {
-      return this.Pozivi.filter(poziv => poziv.id);
-    }
-    },
-    methods: {
-    prihvati(p){
-db.collection("pozivi").doc(p).delete().then(function() {
-    console.log("Document successfully deleted!");
-}).catch(function(error) {
-    console.error("Error removing document: ", error);
-});
-    },
-    odbij(p){
-    db.collection("pozivi").doc(p).delete().then(function() {
-    console.log("Document successfully deleted!");
-}).catch(function(error) {
-    console.error("Error removing document: ", error);
-});
-    }
+  odbij(p,z){
+var brisanje_upit = firebase.firestore().collection("Korisnici").doc(z).collection("pozivi").where("od","==",p);
+brisanje_upit.get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(doc) {
+    doc.ref.delete()
+  });
+}).then(alert("Zahtjev odbijen"));
+  },
+
+
     }
 
 }

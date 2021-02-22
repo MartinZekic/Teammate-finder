@@ -4,8 +4,8 @@
 </navnside>
 <div class="appp">
 <div class=userinfo>
-<img id="avatar" src="../assets/pplaceholder.jpg"/>
-<center><span id="imekor">{{korisnik.korisnickoime}}</span></center>
+<img id="avatar" :src="korisnik.url"/>
+<center><span id="imekor">{{korisnik.id}}</span></center>
 </div>
 <div class=podaci>
 <a id="naslov">Podaci</a>

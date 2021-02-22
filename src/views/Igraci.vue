@@ -17,21 +17,21 @@
   </div>
 </div>
  <div v-if="dotaodabir" class="btn-group">
-  <input v-model="searchText" class="form-control mr-sm-2" type="search"
-placeholder="Search" aria-label="Search">
+  <input v-model="searchTerm" class="form-control mr-sm-2" type="search"
+placeholder="Pretraga po usernameu" aria-label="Search">
 </div>
  
  
  <div v-if="csgoodabir" class="btn-group">
-  <input v-model="searchText" class="form-control mr-sm-2" type="search"
-placeholder="Search" aria-label="Search">
+  <input v-model="searchTerm" class="form-control mr-sm-2" type="search"
+placeholder="Pretraga po usernameu" aria-label="Search">
   
 </div>
 
  <div v-if="lolodabir" class="btn-group">
 
-  <input v-model="searchText" class="form-control mr-sm-2" type="search"
-placeholder="Search" aria-label="Search">
+  <input v-model="searchTerm" class="form-control mr-sm-2" type="search"
+placeholder="Pretraga po usernameu" aria-label="Search">
 
 </div>
  
@@ -74,63 +74,52 @@ export default {
     csgokompigraci
   },
 
+
   mounted(){
    if(this.csgoigraci.some(igrac => igrac.id === doc.data().id)==false){
     firebase.firestore().collection("Korisnici").where("csgo","==",true).onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
-      
-         if(change.type === 'added'){
            let doc = change.doc
            console.log(doc.data())
         let igrac=doc.data()
          igrac.id=doc.id;
         this.csgoigraci.push(igrac);
-}
- else if( change.type === 'removed'){
-                           this.csgoigraci = this.csgoigraci.filter(csgoigraci =>{
-                            return csgoigraci.id != change.doc.id
-                          })
-                        }
+
     });
 });
 }
-  if(this.dotaigraci.some(korisnik => korisnik.id === doc.data().id)==false){
+  if(this.dotaigraci.some(igrac => igrac.id === doc.data().id)==false){
     firebase.firestore().collection("Korisnici").where("dota","==",true).onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
-         if(change.type === 'added'){
            let doc = change.doc
-        let korisnik=doc.data()
-         korisnik.id=doc.id;
-        this.dotaigraci.push(korisnik);
-}
- else if( change.type === 'removed'){
-                           this.dotaigraci = this.dotaigraci.filter(dotaigraci =>{
-                            return dotaigraci.id != change.doc.id
-                          })
-                        }
+        let igrac=doc.data()
+         igrac.id=doc.id;
+        this.dotaigraci.push(igrac);
     });
 });
 }
-  if(this.loligraci.some(korisnik => korisnik.id === doc.data().id)==false){
+  if(this.loligraci.some(igrac => igrac.id === doc.data().id)==false){
     firebase.firestore().collection("Korisnici").where("lol","==",true).onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
          if(change.type === 'added'){
           let doc = change.doc
-        let korisnik=doc.data()
-         korisnik.id=doc.id;
-        this.loligraci.push(korisnik);
+        let igrac=doc.data()
+         igrac.id=doc.id;
+        this.loligraci.push(igrac);
 }
- else if( change.type === 'removed'){
-                           this.loligraci = this.loligraci.filter(loligraci =>{
-                            return loligraci.id != change.doc.id
-                          })
-                        }
     });
 });
 }
+
   },
 
+
   methods:{
+
+    filteredDotaIgraci(){
+        let termin = this.searchTerm;
+        this.dotaigraci.filter((igrac) => igrac.korisnickoime.indexOf(termin) >= 0);
+      },
 
 
       odaberilol(){
@@ -153,8 +142,6 @@ export default {
 
 
   },
-
-
 
 }
 </script>

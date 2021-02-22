@@ -47,7 +47,7 @@ export default {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(function(error) {
         console.log(error);
       }).then(() =>{
-      this.$router.push({name: 'ProfilP'}).catch(err => console.log(err))
+      this.$router.replace({name: 'ProfilP'}).catch(err => console.log(err))
       }
       );
     }

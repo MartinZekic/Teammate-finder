@@ -4,8 +4,8 @@
 <div class="row">
 <div class="col">
 <div class=poster>
-<img id="komavatar" src="../assets/pplaceholder.jpg"/>
-<span id="korimekom">{{ korisnickoIme }}</span>
+<router-link :to="{name: 'Profil', params: {imekorisnika: igrac.id}}"><li><img id="avatar" src="../assets/pplaceholder.jpg"/></li>
+<li id="imekor">{{ igrac.korisnickoime }}</li></router-link>
 </div>
 </div>
 <div class="col">
@@ -24,6 +24,7 @@
 <script>
 import store from '@/store.js'
 export default {
+  props: ['komentar'],
   data (){
         return store 
   },

@@ -9,6 +9,8 @@
 <script type="text/javascript">
 import store from '@/store.js'
 export default {
+
+  props: ['korisnik'],
   data () {
     return store;
   },
@@ -19,13 +21,13 @@ export default {
         this.authenticated = true
         this.userEmail = user.email
         if (this.$route.name === 'Prijava')
-          this.$router.push({name: 'Igraci'}).catch(err => console.log(err))
+          this.$router.replace({name: 'Igraci'}).catch(err => console.log(err))
       }
       else {
         console.log("User is not logged in")
         this.authenticated = false
         if (this.$route.name !== 'Prijava')
-          this.$router.push({name: 'home'}).catch(err => console.log(err))
+          this.$router.replace({name: 'home'}).catch(err => console.log(err))
       }
     });
     

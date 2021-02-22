@@ -4,7 +4,7 @@
 </navnside>
 <div class="appp">
 <div class=userinfo>
-<img id="avatar" src="../assets/pplaceholder.jpg"/>
+<img id="avatar" :src="URL"/>
 <center><span id="imekor">{{ korisnickoIme }}</span></center>
         <router-link :to="{name: 'ProfilP'}">
       <button type="button" class="btn btn-outline-primary" >Uredi profil</button>
@@ -168,6 +168,7 @@ export default {
       this.loltim=doc.data().loltim;
       this.dotatim=doc.data().dotatim;
       this.csgotim=doc.data().csgotim;
+      this.URL=doc.data().url;
       
         
 }).catch(function(error) {

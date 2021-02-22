@@ -76,7 +76,7 @@
                 <div class="chat_ib">
                   <div class="inboxIcon"><i class="" aria-hidden="true"></i></div>
                   <h5>CS:GO Chat </h5>
-                  <div class="chat_img"> <img src="https://itsdcdn.com/resources/services/logowide/340/201809161826/counter-strike-csgo.png" alt="sunil"> </div>
+                  <div class="chat_img"> <img src="https://screenshots.gamebanana.com/img/ico/sprays/4f8e1183dab55.jpg" alt="sunil"> </div>
                 </div>
               </div>
             </div>

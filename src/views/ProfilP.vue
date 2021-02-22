@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="postav">
-    <form @submit.prevent="submitkorisnickoime">
+    <form @submit.prevent="postNewImage">
 <div class=wndw>
 <div class=sadr>
 <a id="naslov"> Postavljanje profila</a>
@@ -20,9 +20,6 @@
       <div id="kropa">
        <croppa :width="150" :height="150" v-model="imageData"></croppa>
       </div>
-      <div id="spremanje">
-        <button v-on:click="postImage">Spremi sliku</button>
-        </div>
     </div>
   </div>
 
@@ -67,15 +64,22 @@ export default {
     
   },
   methods:{
-    submitkorisnickoime(){
-        
-      
-        db.collection("Korisnici").doc(this.userEmail).set({
+    
+    postNewImage(){
+      this.imageData.generateBlob(blobData=>{
+        console.log(blobData);
+        let imageName = store.userEmail + '/'  + Date.now() + ".png";
+        console.log(imageName);
+        storage.ref(imageName).put(blobData).then(result =>{
+            result.ref.getDownloadURL().then(url=>{
+              console.log("javni link", url)
+              db.collection("Korisnici").doc(this.userEmail).set({
                       korisnickoime: this.korisnickoIme,
                       dota: this.Dota,
                       csgo: this.Csgo,
                       lol: this.Lol,
                       id: this.userEmail,
+                      url: url,
                       
                       
                     }).then(function() {
@@ -84,63 +88,21 @@ export default {
                     .catch(function(error) {
                     console.error("Error writing document: ", error);
                     });
-                    if (this.$route.name == 'ProfilP' && this.Dota==true)
-                    this.$router.push({name: 'ProfilDota'}).catch(err => console.log(err))
-                    else if (this.Csgo==true) 
-                    this.$router.push({name: 'ProfilCsgo'}).catch(err => console.log(err))
-                    else if (this.Lol==true)
-                    this.$router.push({name: 'ProfilLol'}).catch(err => console.log(err))
-                  
 
-    },
-    postImage(){
-      return
-      this.imageData.generateBlob((blobData)=> {
-        if(blobData != null){
-        let imageName = this.userEmail + '/' + Date.now() + ".png";
-        console.log(imageName);
-        storage.ref(imageName).put(blobData).then(result =>{
-          result.ref.getDownloadURL().then(url=>{
-            db.collection("Korisnici").doc(this.userEmail).add({
-              dota: this.Dota,
-              csgo: this.Csgo,
-              lol: this.Lol,
-              id: this.userEmail,
-              korisnickoime: this.korisnickoIme,
-              posted_at: Date.now(),
-              url: url
             })
-            .then(docRef =>{
-              console.log("Document written with ID: ", docRef.id);
-              this.imageData = nill;
-            })
-            .catch(e=>{
-              console.error("Error adding document: ",error);
-            });
-          })
-          .catch(e=>{
-            console.error("Error adding document ", error);
-          });
-        })
-        .catch(e=>{
+        }).catch(e =>{
           console.error(e)
-        });
-        if (this.$route.name == 'ProfilP' && this.Dota==true)
+        })
+      })
+      if (this.$route.name == 'ProfilP' && this.Dota==true)
                     this.$router.push({name: 'ProfilDota'}).catch(err => console.log(err))
                     else if (this.Csgo==true) 
                     this.$router.push({name: 'ProfilCsgo'}).catch(err => console.log(err))
                     else if (this.Lol==true)
                     this.$router.push({name: 'ProfilLol'}).catch(err => console.log(err))
-
-        }
-        })
     
     },
-    combo(){
-      this.postImage();
-      this.submitkorisnickoime();
-      
-    }
+    
   }
 }
 </script>

@@ -3,15 +3,7 @@
 <navnside>
 </navnside>
 <div class="appp">
-<div class="bar">
-    <div class="btni">
- <span class="fltrs">
-<div class="btn-group">
-</div>
- </span>
-    </div>
-</div>
-<komptimdota></komptimdota>
+<kompprijatelji :key="prijatelj.id" :prijatelj="prijatelj" v-for="prijatelj in Prijatelji" />
 </div>
 </div>
 </template>
@@ -20,12 +12,35 @@
 
 <script>
 import navnside from '@/components/navnside.vue'
-import komptimdota from '@/components/komptimdota.vue'
+import kompprijatelji from '@/components/kompprijatelji.vue'
+import store from '@/store.js'
 export default {
+  data (){
+        return store
+  },
   components: {
     navnside,
-    komptimdota
+    kompprijatelji
     
+  },
+  mounted(){
+      if(this.Prijatelji.some(prijatelj => prijatelj.id === doc.data().id)==false){
+    db.collection("Korisnici").doc(this.userEmail).collection("prijatelji").onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => { 
+        if(change.type === 'added'){
+          let doc = change.doc       
+         let prijatelj=doc.data()
+        prijatelj.id=doc.id;
+        this.Prijatelji.push(prijatelj);
+    }
+        else if(change.type === 'removed'){
+                           this.Prijatelji = this.Prijatelji.filter(Prijatelji =>{
+                            return Prijatelji.id != change.doc.id
+                          })
+                        }
+    });
+});
+      }
   },
 
 }

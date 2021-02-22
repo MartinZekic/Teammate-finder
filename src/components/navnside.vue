@@ -5,7 +5,7 @@
     <div class="navbar-header fixed-brand">
     <img id="navlogo" src="../assets/logo.png">
        <div class=usernav>
-      <router-link to="/moj-profil"><img id="navavatar" src="../assets/pplaceholder.jpg"/>
+      <router-link to="/moj-profil"><img id="navavatar" :src="URL"/>
       <span id="korime">{{ userEmail }}</span></router-link>
       <div class="od">
       <a @click="logout" href="#" id=odjava>Odjava</a>
@@ -20,17 +20,18 @@
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
 
-        <li class="active">
-          <a href="/igraci"><span class="fa-stack fa-lg pull-left"></span> Igrači</a>
+          <li class="active">
+          <router-link to="/igraci"><a><span class="fa-stack fa-lg pull-left"></span> Igrači</a></router-link>
         </li>
         <li>
-          <a href="/timovi"><span class="fa-stack fa-lg pull-left"></span> Prijatelji</a>
+          <router-link to="/timovi"><a><span class="fa-stack fa-lg pull-left"></span> Prijatelji</a></router-link>
         </li>
+        <li>
         <li>
          <router-link to="/pozivi"> <a><span class="fa-stack fa-lg pull-left"></span>Pozivi</a></router-link>
         </li>
         <li>
-          <a href="/inbox"> <span class="fa-stack fa-lg pull-left"></span>Chat</a>
+          <router-link to="/inbox"> <a><span class="fa-stack fa-lg pull-left"></span>Chat</a></router-link>
         </li>
       </ul>
     </div>
@@ -56,7 +57,7 @@ return store
     db.collection("Korisnici").doc(this.userEmail).get().then(doc =>{
         console.log("Document data:", doc.data());
       this.korisnickoIme=doc.data().korisnickoime;
-      
+      this.URL=doc.data().url;
         
 }).catch(function(error) {
     console.log("Error getting document:", error);
